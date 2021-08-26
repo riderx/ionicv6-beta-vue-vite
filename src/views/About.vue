@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref } from "vue";
+  import { ref } from "vue";
   import {
     IonContent,
     IonButton,
@@ -32,6 +32,9 @@
     IonToolbar,
     IonModal,
     onIonViewWillEnter,
+    onIonViewDidEnter,
+    onIonViewDidLeave,
+    onIonViewWillLeave,
   } from "@ionic/vue";
   import AboutModal from "../components/AboutModal.vue";
 
@@ -44,14 +47,20 @@
     modalIsOpen.value = false;
   };
 
+  onIonViewDidEnter(() => {
+      console.log('About page did enter');
+    });
+
+  onIonViewDidLeave(() => {
+    console.log('About page did leave');
+  });
+
   onIonViewWillEnter(() => {
-      console.log('onIonViewWillEnter test 1');
-    });
-    
-  onMounted(() => {
-    onIonViewWillEnter(() => {
-      console.log('onIonViewWillEnter test 2');
-    });
+    console.log('About page will enter');
+  });
+
+  onIonViewWillLeave(() => {
+    console.log('About page will leave');
   });
 </script>
 
