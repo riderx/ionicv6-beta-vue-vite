@@ -12,30 +12,15 @@
   </ion-content>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from "vue";
-import {
-  IonContent,
-  IonButton,
-  IonButtons,
-  IonBackButton,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/vue";
-export default defineComponent({
-  name: "AboutModal",
-  components: {
-    IonHeader,
+<script setup lang="ts">
+  import {
+    IonContent,
     IonButton,
     IonButtons,
-    IonBackButton,
-    IonContent,
+    IonHeader,
     IonTitle,
     IonToolbar,
-  },
-  emits: ["onClose"],
-  setup: () => {},
-});
+  } from "@ionic/vue";
+  defineEmits(['onClose'])
 </script>
 

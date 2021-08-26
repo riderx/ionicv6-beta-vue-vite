@@ -19,51 +19,40 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-import {
-  IonContent,
-  IonButton,
-  IonButtons,
-  IonBackButton,
-  IonPage,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonModal,
-} from "@ionic/vue";
-import AboutModal from "../components/AboutModal.vue";
-
-export default defineComponent({
-  name: "About",
-  components: {
-    IonHeader,
-    IonPage,
+<script setup lang="ts">
+  import { onMounted, ref } from "vue";
+  import {
+    IonContent,
     IonButton,
     IonButtons,
     IonBackButton,
-    IonContent,
+    IonPage,
+    IonHeader,
     IonTitle,
     IonToolbar,
     IonModal,
-    AboutModal,
-  },
-  setup() {
-    const modalIsOpen = ref(false);
-    const showModal = () => {
-      modalIsOpen.value = true;
-    };
+    onIonViewWillEnter,
+  } from "@ionic/vue";
+  import AboutModal from "../components/AboutModal.vue";
 
-    const closeModal = () => {
-      modalIsOpen.value = false;
-    };
-    return {
-      showModal,
-      closeModal,
-      modalIsOpen,
-    };
-  },
-});
+  const modalIsOpen = ref(false);
+  const showModal = () => {
+    modalIsOpen.value = true;
+  };
+
+  const closeModal = () => {
+    modalIsOpen.value = false;
+  };
+
+  onIonViewWillEnter(() => {
+      console.log('onIonViewWillEnter test 1');
+    });
+    
+  onMounted(() => {
+    onIonViewWillEnter(() => {
+      console.log('onIonViewWillEnter test 2');
+    });
+  });
 </script>
 
 <style>
